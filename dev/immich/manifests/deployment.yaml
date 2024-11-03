@@ -1,0 +1,34 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: immich
+spec:
+  revisionHistoryLimit: 3
+  replicas: 1
+  selector:
+    matchLabels:
+      name: immich
+  template:
+    metadata:
+      labels:
+        name: immich
+    spec:
+      containers:
+        - name: immich-server
+          image: "ghcr.io/immich-app/immich-server:v1.119.1"
+          env:
+            TZ: america/new_york
+          ports:
+            - name: http
+              containerPort: 2283
+              protocol: TCP
+          volumeMounts:
+            - mountPath: /mnt/collections
+              name: collections
+      volumes:
+        - name: collections
+          nfs:
+            server: <path:gitops:base#domain_nas>
+            path: <path:gitops:base#nas>/immich/collections
+            readOnly: true
