@@ -3,6 +3,6 @@ name: postgres
 type: application
 version: 0.0.0
 dependencies:
-  - name: postgres
+  - name: cloudnative-pg
     version: 0.22.1
     repository: https://cloudnative-pg.github.io/charts
