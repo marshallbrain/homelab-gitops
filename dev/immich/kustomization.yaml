@@ -6,4 +6,3 @@ resources:
   - manifests/service.yaml
   - manifests/postgres.yaml
   - manifests/immich-secrets.yaml
-  - manifests/dragonfly.yaml
