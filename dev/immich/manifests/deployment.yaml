@@ -18,11 +18,16 @@ spec:
         - name: immich-server
           image: "ghcr.io/immich-app/immich-server:v1.119.1"
           env:
-            - TZ: america/new_york
-            - REDIS_HOSTNAME: immich-dragonfly
-            - DB_HOSTNAME: immich-postgres
-            - DB_USERNAME: immich
-            - DB_DATABASE_NAME: immich
+            - name: TZ
+              value: america/new_york
+            - name: REDIS_HOSTNAME
+              value: immich-dragonfly
+            - name: DB_HOSTNAME
+              value: immich-postgres
+            - name: DB_USERNAME
+              value: immich
+            - name: DB_DATABASE_NAME
+              value: immich
           envfrom:
             - secretRef:
                 name: immich-db-secret
