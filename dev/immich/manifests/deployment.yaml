@@ -19,16 +19,23 @@ spec:
           image: "ghcr.io/immich-app/immich-server:v1.119.1"
           env:
             TZ: america/new_york
+            REDIS_HOSTNAME: immich-dragonfly
+            DB_HOSTNAME: immich-postgres
+            DB_USERNAME: immich
+            DB_DATABASE_NAME: immich
+          envfrom:
+            - secretRef:
+                name: immich-db-secret
           ports:
             - name: http
               containerPort: 2283
               protocol: TCP
-          volumeMounts:
-            - mountPath: /mnt/collections
-              name: collections
-      volumes:
-        - name: collections
-          nfs:
-            server: <path:gitops:base#domain_nas>
-            path: <path:gitops:base#nas>/immich/collections
-            readOnly: true
+      #     volumeMounts:
+      #       - mountPath: /mnt/collections
+      #         name: collections
+      # volumes:
+      #   - name: collections
+      #     nfs:
+      #       server: <path:gitops:base#domain_nas>
+      #       path: <path:gitops:base#nas>/immich/collections
+      #       readOnly: true
