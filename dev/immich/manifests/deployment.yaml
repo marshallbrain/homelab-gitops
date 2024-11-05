@@ -21,7 +21,7 @@ spec:
             - name: TZ
               value: america/new_york
             - name: REDIS_HOSTNAME
-              value: immich-dragonfly
+              value: immich-redis-master
             - name: DB_HOSTNAME
               value: immich-postgres-rw
             - name: DB_USERNAME
