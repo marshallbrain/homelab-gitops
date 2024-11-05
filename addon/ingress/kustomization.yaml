@@ -5,4 +5,5 @@ resources:
   - certificate.yaml
   - issuer.yaml
   - routes/argocd.yaml
+  - routes/immich.yaml
   - tlsstore.yaml
