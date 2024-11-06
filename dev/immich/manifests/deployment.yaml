@@ -15,8 +15,10 @@ spec:
         name: immich
     spec:
       securityContext:
-        runAsUser: 1200
-        runAsGroup: 1200
+        # runAsUser: 1200
+        # runAsGroup: 1200
+        fsGroup: 1200
+        supplementalGroups: [1000]
       containers:
         - name: immich-server
           image: "ghcr.io/immich-app/immich-server:v1.119.1"
