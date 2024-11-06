@@ -14,6 +14,8 @@ spec:
       labels:
         name: immich
     spec:
+      securityContext:
+        fsGroup: 1200
       containers:
         - name: immich-server
           image: "ghcr.io/immich-app/immich-server:v1.119.1"
