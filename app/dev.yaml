@@ -21,6 +21,10 @@ spec:
         repoURL: https://github.com/marshallbrain/homelab-gitops.git
         targetRevision: "dev/{{ .path.basename }}"
         path: "{{ .path.path }}"
+        plugin:
+          env:
+            - name: AVP_TYPE
+              value: kubernetessecret
       destination:
         server: https://kubernetes.default.svc
         namespace: "{{index .path.segments 0}}"
