@@ -42,17 +42,17 @@ spec:
           volumeMounts:
             - mountPath: /mnt/collections
               name: collections
-            - mountPath: /usr/src/app/upload
-              name: upload
+            # - mountPath: /usr/src/app/upload
+            #   name: upload
       volumes:
         - name: collections
           nfs:
             server: <path:gitops:base#domain_nas>
             path: /mnt/<path:gitops:base#nas>/immich/collections
             readOnly: true
-        - name: upload
-          emptyDir:
-            sizeLimit: 500Mi
+        # - name: upload
+        #   emptyDir:
+        #     sizeLimit: 500Mi
           # nfs:
           #   server: <path:gitops:base#domain_nas>
           #   path: /mnt/<path:gitops:base#nas>/immich/upload
