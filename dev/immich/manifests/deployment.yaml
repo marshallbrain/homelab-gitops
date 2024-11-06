@@ -51,6 +51,8 @@ spec:
             path: /mnt/<path:gitops:base#nas>/immich/collections
             readOnly: true
         - name: upload
-          nfs:
-            server: <path:gitops:base#domain_nas>
-            path: /mnt/<path:gitops:base#nas>/immich/upload
+          emptyDir:
+            sizeLimit: 500Mi
+          # nfs:
+          #   server: <path:gitops:base#domain_nas>
+          #   path: /mnt/<path:gitops:base#nas>/immich/upload
