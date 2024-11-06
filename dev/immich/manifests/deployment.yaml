@@ -32,6 +32,8 @@ spec:
               value: immich
             - name: IMMICH_PORT
               value: "2283"
+            - name: IMMICH_IGNORE_MOUNT_CHECK_ERRORS
+              value: true
           envFrom:
             - secretRef:
                 name: immich-db-secret
@@ -42,17 +44,15 @@ spec:
           volumeMounts:
             - mountPath: /mnt/collections
               name: collections
-            # - mountPath: /usr/src/app/upload
-            #   name: upload
+            - mountPath: /usr/src/app/upload
+              name: upload
       volumes:
         - name: collections
           nfs:
             server: <path:gitops:base#domain_nas>
             path: /mnt/<path:gitops:base#nas>/immich/collections
             readOnly: true
-        # - name: upload
-        #   emptyDir:
-        #     sizeLimit: 500Mi
-          # nfs:
-          #   server: <path:gitops:base#domain_nas>
-          #   path: /mnt/<path:gitops:base#nas>/immich/upload
+        - name: upload
+          nfs:
+            server: <path:gitops:base#domain_nas>
+            path: /mnt/<path:gitops:base#nas>/immich/upload
