@@ -15,6 +15,7 @@ spec:
         name: immich
     spec:
       securityContext:
+        runAsUser: 1200
         runAsGroup: 1200
       containers:
         - name: immich-server
