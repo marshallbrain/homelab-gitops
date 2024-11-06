@@ -30,8 +30,6 @@ spec:
               value: immich
             - name: IMMICH_PORT
               value: "2283"
-            - name: TEST
-              value: <path:gitops:base#domain_nas>
           envFrom:
             - secretRef:
                 name: immich-db-secret
@@ -39,12 +37,18 @@ spec:
             - name: http
               containerPort: 2283
               protocol: TCP
-      #     volumeMounts:
-      #       - mountPath: /mnt/collections
-      #         name: collections
-      # volumes:
-      #   - name: collections
-      #     nfs:
-      #       server: <path:gitops:base#domain_nas>
-      #       path: <path:gitops:base#nas>/immich/collections
-      #       readOnly: true
+          volumeMounts:
+            - mountPath: /mnt/collections
+              name: collections
+            - mountPath: /usr/src/app/upload
+              name: upload
+      volumes:
+        - name: collections
+          nfs:
+            server: <path:gitops:base#domain_nas>
+            path: <path:gitops:base#nas>/immich/collections
+            readOnly: true
+        - name: upload
+          nfs:
+            server: <path:gitops:base#domain_nas>
+            path: <path:gitops:base#nas>/immich/upload
