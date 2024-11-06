@@ -30,6 +30,8 @@ spec:
               value: immich
             - name: IMMICH_PORT
               value: "2283"
+            - name: TEST
+              value: <path:gitops:base#domain_nas>
           envFrom:
             - secretRef:
                 name: immich-db-secret
