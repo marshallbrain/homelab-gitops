@@ -46,9 +46,9 @@ spec:
         - name: collections
           nfs:
             server: <path:gitops:base#domain_nas>
-            path: <path:gitops:base#nas>/immich/collections
+            path: /<path:gitops:base#nas>/immich/collections
             readOnly: true
         - name: upload
           nfs:
             server: <path:gitops:base#domain_nas>
-            path: <path:gitops:base#nas>/immich/upload
+            path: /<path:gitops:base#nas>/immich/upload
