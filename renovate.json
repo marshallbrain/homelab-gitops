@@ -9,9 +9,12 @@
   },
   "packageRules": [
     {
+      "matchPackageNames": ["immich-server"],
+      "automerge": true
+    },
+    {
       "matchUpdateTypes": ["minor", "patch"],
       "matchCurrentVersion": "!/^0/",
-      "ignoreDeps": ["immich-server"],
       "automerge": true,
       "automergeSchedule": ["* 6-2 * * 0"]
     }
