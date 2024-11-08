@@ -16,9 +16,9 @@
       "matchUpdateTypes": ["minor", "patch"],
       "matchCurrentVersion": "!/^0/",
       "automerge": true,
-      "automergeSchedule": ["* 6-2 * * 0"]
+      "automergeSchedule": ["* 6-14 * * 0"]
     }
   ],
   "branchConcurrentLimit": 2,
-  "schedule": ["* 6-2 * * 6"]
+  "schedule": ["* 6-14 * * 6"]
 }
