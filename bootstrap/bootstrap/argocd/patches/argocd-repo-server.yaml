@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: argocd-repo-server
+spec:
+  template:
+    spec:
+      containers:
+      - name: lovely-plugin
+        image: ghcr.io/crumbhole/lovely-vault-plugin:1.2.0
+        securityContext:
+          runAsNonRoot: true
+          runAsUser: 999
+        env:
+          - name: AVP_TYPE
+            value: kubernetessecret
+          - name: PLUGIN_NAME
+            value: lovely-vault-plugin
+        volumeMounts:
+          - mountPath: /var/run/argocd
+            name: var-files
+          - mountPath: /home/argocd/cmp-server/plugins
+            name: plugins
+          - mountPath: /tmp
+            name: tmp-lovely
+      volumes:
+        # A temporary directory for the tool to work in.
+        - emptyDir: {}
+          name: tmp-lovely
+
+      # Not strictly necessary, but required for passing AVP configuration from a secret and for using Kubernetes auth to Hashicorp Vault
+      automountServiceAccountToken: true
