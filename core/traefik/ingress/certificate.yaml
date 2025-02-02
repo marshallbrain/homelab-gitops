@@ -1,0 +1,15 @@
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: certificate
+  namespace: core
+spec:
+  secretName: certificate-tls
+  issuerRef:
+    name: letsencrypt
+    kind: ClusterIssuer
+  commonName: "*.<path:core:ingress#domain>"
+  dnsNames:
+  - "<path:core:ingress#domain>"
+  - "*.<path:core:ingress#domain>"
