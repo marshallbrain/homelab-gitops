@@ -4,3 +4,4 @@ kind: Kustomization
 resources:
   - postgres.yaml
   - minio-creds.yaml
+  - volume-claim.yaml
