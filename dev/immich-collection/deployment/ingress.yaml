@@ -1,0 +1,27 @@
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: immich-collection-ingress
+  annotations: 
+    kubernetes.io/ingress.class: traefik-external
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`chlorine.<path:core:paths#domain>`)
+      kind: Rule
+      middlewares:
+        - name: immich-collection-redirect
+      services:
+        - name: immich-collection
+          port: 2283
+---
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: immich-collection-redirect
+spec:
+  redirectRegex:
+    regex: ^https://chlorine.<path:core:paths#domain>/?$
+    replacement: https://chlorine.<path:core:paths#domain>/search?query=%7B"model"%3A"General"%2C"isFavorite"%3Atrue%7D
