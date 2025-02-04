@@ -80,4 +80,4 @@ spec:
             readOnly: true
         - name: library
           persistentVolumeClaim:
-            claimName: pvc-immich-collection
+            claimName: pvc-immich-gallery
