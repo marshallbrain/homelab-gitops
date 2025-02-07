@@ -4,6 +4,7 @@ namespace: argocd
 
 resources:
   - https://raw.githubusercontent.com/argoproj/argo-cd/refs/tags/v2.13.4/manifests/install.yaml
+  - argocd/clusterrole.yaml
 
   - https://raw.githubusercontent.com/metallb/metallb/refs/tags/v0.14.9/config/manifests/metallb-native.yaml
   - metallb/addresspool.yaml
@@ -20,3 +21,7 @@ patches:
     target:
       kind: Deployment
       name: argocd-repo-server
+  - path: argocd/patches/loadbalancer.yaml
+    target:
+      kind: Service
+      name: argocd-server
