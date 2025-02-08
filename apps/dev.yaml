@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: core
+  name: dev
   namespace: argocd
 spec:
   goTemplate: true
@@ -9,9 +9,9 @@ spec:
   generators:
     - git:
         repoURL: https://github.com/marshallbrain/homelab-gitops.git
-        revision: HEAD
+        revision: develop
         directories:
-          - path: core/*
+          - path: dev/*
   template:
     metadata:
       name: "{{ .path.basename }}"
@@ -19,17 +19,14 @@ spec:
       project: default
       source:
         repoURL: https://github.com/marshallbrain/homelab-gitops.git
-        targetRevision: HEAD
+        targetRevision: "app/{{ .path.basename }}"
         path: "{{ .path.path }}"
         plugin:
           name: lovely-vault-plugin
       destination:
         server: https://kubernetes.default.svc
-        namespace: core
+        namespace: dev
       syncPolicy:
-        managedNamespaceMetadata:
-          labels:
-            pod-security.kubernetes.io/enforce: privileged
         automated:
           prune: true
           selfHeal: true
