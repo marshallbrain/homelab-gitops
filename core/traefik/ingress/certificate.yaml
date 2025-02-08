@@ -9,7 +9,7 @@ spec:
   issuerRef:
     name: letsencrypt
     kind: ClusterIssuer
-  commonName: "*.<path:core:ingress#domain>"
+  commonName: "*.<path:core:paths#domain>"
   dnsNames:
-  - "<path:core:ingress#domain>"
-  - "*.<path:core:ingress#domain>"
+  - "<path:core:paths#domain>"
+  - "*.<path:core:paths#domain>"

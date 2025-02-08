@@ -10,7 +10,7 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`carbon.<path:core:ingress#domain>`)
+    - match: Host(`carbon.<path:core:paths#domain>`)
       kind: Rule
       services:
         - name: argocd-server
