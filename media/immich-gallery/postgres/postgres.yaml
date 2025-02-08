@@ -29,7 +29,7 @@ spec:
   backup:
     barmanObjectStore:
       destinationPath: s3://cnpg-immich-gallery/
-      endpointURL: https://thorium.<path:core:ingress#domain>
+      endpointURL: https://thorium.<path:core:paths#domain>
       s3Credentials:
         accessKeyId:
           name: minio-creds

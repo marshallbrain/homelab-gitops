@@ -8,5 +8,6 @@ resources:
   - deployment/volume-claim.yaml
 
   - postgres/postgres.yaml
+  - postgres/backup.yaml
 
-  - secrets/secrets.yaml
+  - secrets.yaml
