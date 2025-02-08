@@ -9,7 +9,7 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`chlorine.<path:core:paths#domain>`)
+    - match: Host(`sodium.<path:core:paths#domain>`)
       kind: Rule
       middlewares:
         - name: immich-collection-redirect
@@ -23,5 +23,5 @@ metadata:
   name: immich-collection-redirect
 spec:
   redirectRegex:
-    regex: ^https://chlorine.<path:core:paths#domain>/?$
-    replacement: https://chlorine.<path:core:paths#domain>/search?query=%7B"model"%3A"General"%2C"isFavorite"%3Atrue%7D
+    regex: ^https://sodium.<path:core:paths#domain>/?$
+    replacement: https://sodium.<path:core:paths#domain>/search?query=%7B"model"%3A"General"%2C"isFavorite"%3Atrue%7D

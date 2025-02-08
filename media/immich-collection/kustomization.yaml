@@ -10,4 +10,3 @@ resources:
   - postgres/postgres.yaml
 
   - secrets/secrets.yaml
-  - secrets/minio-creds.yaml
