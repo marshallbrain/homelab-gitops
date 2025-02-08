@@ -4,9 +4,15 @@
     "config:recommended",
     ":dependencyDashboard"
   ],
+  
+  "kubernetes": {
+    "fileMatch": ["\\.yaml$"]
+  },
+
   "major": {
     "dependencyDashboardApproval": true
   },
+
   "packageRules": [
     {
       "matchUpdateTypes": ["minor", "patch"],
@@ -19,6 +25,8 @@
 	  "dependencyDashboardApproval": true
     }
   ],
+
   "branchConcurrentLimit": 1,
   "schedule": ["* * * * 1-4"]
+  
 }
