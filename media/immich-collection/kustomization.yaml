@@ -11,3 +11,8 @@ resources:
   - postgres/backup.yaml
 
   - secrets.yaml
+
+images:
+- name: immich-server
+  newName: ghcr.io/immich-app/immich-server
+  newTag: v1.125.7

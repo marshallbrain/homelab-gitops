@@ -4,10 +4,25 @@
     "config:recommended",
     ":dependencyDashboard"
   ],
-  
-  "kubernetes": {
-    "fileMatch": ["\\.yaml$"]
-  },
+
+  "customManagers": [
+    {
+      "customType": "regex",
+      "fileMatch": ["kustomization.yaml$"],
+      "matchStrings": [
+        "https:\/\/github\\.com\/(?<depName>.*\/.*?)\/releases\/download\/(?<currentValue>.*?)\/"
+      ],
+      "datasourceTemplate": "github-releases"
+    },
+    {
+      "customType": "regex",
+      "fileMatch": ["kustomization.yaml$"],
+      "matchStrings": [
+        "https:\/\/raw\\.githubusercontent\\.com\/(?<depName>[^\/]+\/[^\/]+)\/refs\/tags\/(?<currentValue>.*?)\/"
+      ],
+      "datasourceTemplate": "github-tags"
+    }
+  ],
 
   "major": {
     "dependencyDashboardApproval": true
