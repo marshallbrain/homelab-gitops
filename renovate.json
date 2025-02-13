@@ -35,11 +35,13 @@
       "automerge": true
     },
     {
-      "matchPackageNames": ["immich-server"],
-	  "dependencyDashboardApproval": true
+      "matchPackageNames": ["ghcr.io/immich-app/immich-server"],
+	    "dependencyDashboardApproval": true,
+      "automerge": false
     }
   ],
 
-  "branchConcurrentLimit": 1
+  "branchConcurrentLimit": 1,
+  "schedule": ["* * * * 4-6"]
   
 }
