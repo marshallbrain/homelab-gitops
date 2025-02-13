@@ -33,15 +33,18 @@
       "matchUpdateTypes": ["minor", "patch"],
       "matchCurrentVersion": "!/^0/",
       "automerge": true,
-      "automergeSchedule": ["* * * * 6"]
+      "automergeSchedule": ["* * * * 0"],
+      "groupName": "dependencies (non-major)"
     },
     {
-      "matchPackageNames": ["immich-server"],
-	  "dependencyDashboardApproval": true
+      "matchPackageNames": ["ghcr.io/immich-app/immich-server"],
+	    "dependencyDashboardApproval": true,
+      "groupName": "dependencies (immich)"
     }
   ],
 
   "branchConcurrentLimit": 1,
-  "schedule": ["* * * * 1-4"]
-  
+  "schedule": ["* * * * 1-5"],
+  "ignoreTests": true,
+  "autoApprove": true
 }
