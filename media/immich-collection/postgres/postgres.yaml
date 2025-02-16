@@ -41,3 +41,26 @@ spec:
   storage:
     storageClass: local-path
     size: 1Gi
+
+  # bootstrap:
+  #   recovery:
+  #     source: immich-collection-postgres
+  #     database: immich-collection
+  #     owner: immich-collection
+  #     secret:
+  #       name: immich-collection-secret
+
+  # externalClusters:
+  #   - name: immich-collection-postgres
+  #     barmanObjectStore:
+  #       destinationPath: s3://cnpg-immich-collection/
+  #       endpointURL: https://thorium.lab.borealis.dev
+  #       s3Credentials:
+  #         accessKeyId:
+  #           name: minio-creds
+  #           key: ACCESS_KEY_ID
+  #         secretAccessKey:
+  #           name: minio-creds
+  #           key: ACCESS_SECRET_KEY
+  #       wal:
+  #         maxParallel: 8

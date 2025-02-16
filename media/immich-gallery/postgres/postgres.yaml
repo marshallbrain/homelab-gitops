@@ -39,5 +39,5 @@ spec:
           key: ACCESS_SECRET_KEY
 
   storage:
-    storageClass: local-path
+    storageClass: local-default
     size: 1Gi
