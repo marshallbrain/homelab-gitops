@@ -24,4 +24,4 @@ metadata:
 spec:
   redirectRegex:
     regex: ^https://indium.<path:core:paths#domain>/?$
-    replacement: https://indium.<path:core:paths#domain>/search?query=%7B%7D
+    replacement: https://indium.<path:core:paths#domain>/search?query=%7B"isFavorite"%3Atrue%7D
