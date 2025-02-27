@@ -1,0 +1,27 @@
+grafana:
+
+  initChownData:
+    enabled: false
+
+  securityContext:
+    runAsNonRoot: true
+    runAsUser: 65534
+    runAsGroup: 65534
+    fsGroup: 65534
+
+  persistence:
+    type: pvc
+    enabled: true
+    storageClassName: nfs-csi
+    accessModes:
+    - ReadWriteMany
+    size: 10Gi
+
+  admin:
+    existingSecret: grafana-secret
+    userKey: admin-user
+    passwordKey: admin-password
+
+  service:
+    port: 3000
+    targetPort: 3000
