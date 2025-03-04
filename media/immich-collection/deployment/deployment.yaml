@@ -15,7 +15,10 @@ spec:
         name: immich-collection
     spec:
       securityContext:
-        fsGroup: 1200
+        runAsNonRoot: true
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
       containers:
         - name: immich-collection-server
           image: immich-server
@@ -79,5 +82,6 @@ spec:
             path: <path:core:paths#nas_storage>/immich/collections
             readOnly: true
         - name: library
-          persistentVolumeClaim:
-            claimName: pvc-immich-collection
+          nfs:
+            server: vega.<path:core:paths#domain_lan>
+            path: <path:core:paths#nas_volumes>/immich-collection

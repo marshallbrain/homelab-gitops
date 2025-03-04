@@ -5,7 +5,6 @@ resources:
   - deployment/deployment.yaml
   - deployment/ingress.yaml
   - deployment/service.yaml
-  - deployment/volume-claim.yaml
 
   - postgres/postgres.yaml
   - postgres/backup.yaml
