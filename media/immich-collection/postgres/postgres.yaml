@@ -28,7 +28,7 @@ spec:
 
   backup:
     barmanObjectStore:
-      destinationPath: s3://cnpg-immich-collection/
+      destinationPath: s3://backups-postgres/
       endpointURL: https://thorium.<path:core:paths#domain>
       s3Credentials:
         accessKeyId:
@@ -37,6 +37,7 @@ spec:
         secretAccessKey:
           name: minio-creds
           key: ACCESS_SECRET_KEY
+    retentionPolicy: "30d"
 
   storage:
     storageClass: local-path
