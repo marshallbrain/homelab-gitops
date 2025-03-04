@@ -1,0 +1,30 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: grafana-postgres
+spec:
+  instances: 1
+  
+  bootstrap:
+    initdb:
+      database: grafana
+      owner: grafana
+      secret:
+        name: grafana-secret
+
+  backup:
+    barmanObjectStore:
+      destinationPath: s3://backups-postgres/
+      endpointURL: https://thorium.<path:core:paths#domain>
+      s3Credentials:
+        accessKeyId:
+          name: minio-creds
+          key: ACCESS_KEY_ID
+        secretAccessKey:
+          name: minio-creds
+          key: ACCESS_SECRET_KEY
+    retentionPolicy: "30d"
+
+  storage:
+    storageClass: local-path
+    size: 1Gi

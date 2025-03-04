@@ -25,3 +25,25 @@ grafana:
   service:
     port: 3000
     targetPort: 3000
+
+  grafana.ini:
+    database:
+      type: postgres
+      host: grafana-postgres-rw:5432
+      name: grafana
+      user: ${DB_USERNAME}
+      password: ${DB_PASSWORD}
+
+  envValueFrom:
+    DB_USERNAME:
+      secretKeyRef:
+        key: username
+        name: grafana-secret
+    DB_PASSWORD:
+      secretKeyRef:
+        key: password
+        name: grafana-secret
+
+  # envFromSecret: grafana-secret
+
+  logLevel: INFO
