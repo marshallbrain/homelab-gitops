@@ -24,10 +24,6 @@
     }
   ],
 
-  "major": {
-    "dependencyDashboardApproval": true
-  },
-
   "packageRules": [
     {
       "matchUpdateTypes": ["minor", "patch"],
@@ -35,6 +31,14 @@
       "automerge": true,
       "automergeSchedule": ["* * * * 0"],
       "groupName": "dependencies (non-major)"
+    },
+    {
+      "matchUpdateTypes": ["major"],
+	    "dependencyDashboardApproval": true
+    },
+    {
+      "matchCurrentVersion": "/^0\\./",
+	    "dependencyDashboardApproval": true
     },
     {
       "matchPackageNames": ["ghcr.io/immich-app/immich-server"],
