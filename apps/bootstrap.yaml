@@ -1,35 +1,50 @@
 apiVersion: argoproj.io/v1alpha1
-kind: Application
+kind: ApplicationSet
 metadata:
   name: bootstrap
   namespace: argocd
 spec:
-  project: default
-  source:
-    repoURL: https://github.com/marshallbrain/homelab-gitops.git
-    targetRevision: HEAD
-    path: bootstrap
-    plugin:
-      name: lovely-vault-plugin
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: argocd
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-    retry:
-      limit: 10
-      backoff:
-        duration: 1m
-        factor: 2
-        maxDuration: 3m
-    syncOptions:
-      - ApplyOutOfSyncOnly=true
-      - ServerSideApply=true
-      - RespectIgnoreDifferences=true
-  ignoreDifferences:
-    - group: ""
-      kind: Service
-      jqPathExpressions:
-        - .status.loadBalancer.ingress[].ipMode
+  goTemplate: true
+  goTemplateOptions: ["missingkey=error"]
+  generators:
+    - git:
+        repoURL: https://github.com/marshallbrain/homelab-gitops.git
+        revision: HEAD
+        directories:
+          - path: bootstrap/*
+  template:
+    metadata:
+      name: "{{ .path.basename }}"
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/marshallbrain/homelab-gitops.git
+        targetRevision: HEAD
+        path: "{{ .path.path }}"
+        plugin:
+          name: lovely-vault-plugin
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: argocd
+      syncPolicy:
+        managedNamespaceMetadata:
+          labels:
+            pod-security.kubernetes.io/enforce: privileged
+        automated:
+          prune: true
+          selfHeal: true
+        retry:
+          limit: 10
+          backoff:
+            duration: 1m
+            factor: 2
+            maxDuration: 3m
+        syncOptions:
+          - CreateNamespace=true
+          - ApplyOutOfSyncOnly=true
+          - ServerSideApply=true
+      ignoreDifferences:
+        - group: ""
+          kind: Service
+          jqPathExpressions:
+            - .status.loadBalancer.ingress[].ipMode

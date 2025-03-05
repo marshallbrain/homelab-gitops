@@ -4,13 +4,7 @@ namespace: argocd
 
 resources:
   - https://raw.githubusercontent.com/argoproj/argo-cd/refs/tags/v2.14.3/manifests/install.yaml
-  - argocd/clusterrole.yaml
-
-  - https://raw.githubusercontent.com/metallb/metallb/refs/tags/v0.14.9/config/manifests/metallb-native.yaml
-  - metallb/addresspool.yaml
-  - metallb/l2advertisment.yaml
-
-  - https://github.com/bitnami-labs/sealed-secrets/releases/download/v0.28.0/controller.yaml
+  - clusterrole.yaml
 
 patches:
   - path: argocd/patches/argo-cm.yaml
