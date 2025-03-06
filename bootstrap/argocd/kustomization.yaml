@@ -7,15 +7,15 @@ resources:
   - clusterrole.yaml
 
 patches:
-  - path: argocd/patches/argo-cm.yaml
+  - path: patches/argo-cm.yaml
     target:
       kind: ConfigMap
       name: argocd-cm
-  - path: argocd/patches/argocd-repo-server.yaml
+  - path: patches/argocd-repo-server.yaml
     target:
       kind: Deployment
       name: argocd-repo-server
-  - path: argocd/patches/loadbalancer.yaml
+  - path: patches/loadbalancer.yaml
     target:
       kind: Service
       name: argocd-server
