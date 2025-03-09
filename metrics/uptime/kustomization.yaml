@@ -6,3 +6,8 @@ resources:
   - ingress.yaml
   - service.yaml
   - volume-claim.yaml
+
+images:
+- name: uptime-kuma
+  newName: louislam/uptime-kuma
+  newTag: "1.23.16"
