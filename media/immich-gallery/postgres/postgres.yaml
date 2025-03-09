@@ -37,7 +37,7 @@ spec:
         secretAccessKey:
           name: minio-creds
           key: ACCESS_SECRET_KEY
-    retentionPolicy: "30d"
+    retentionPolicy: "16d"
 
   storage:
     storageClass: local-path
