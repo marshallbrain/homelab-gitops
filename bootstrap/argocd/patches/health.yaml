@@ -1,0 +1,12 @@
+kind: ConfigMap
+metadata:
+  name: argocd-cm
+  namespace: argocd
+data:
+  resource.customizations: |
+    k8s.mariadb.com/Backup:
+      health.lua: |
+        hs = {}
+        hs.status = "Healthy"
+        hs.message = "Ignoring health check"
+        return hs
