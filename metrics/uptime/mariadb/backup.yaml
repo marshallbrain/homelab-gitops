@@ -1,0 +1,21 @@
+apiVersion: k8s.mariadb.com/v1alpha1
+kind: Backup
+metadata:
+  name: uptime-backup
+spec:
+  maxRetention: "48h"
+  mariaDbRef:
+    name: uptime-mariadb
+  schedule:
+    cron: "0 0 * * *"
+    suspend: false
+  storage:
+    s3:
+      bucket: backups-mariadb
+      endpoint: https://thorium.<path:core:paths#domain>
+      accessKeyIdSecretKeyRef:
+        name: minio-creds
+        key: ACCESS_KEY_ID
+      secretAccessKeySecretKeyRef:
+        name: minio-creds
+        key: ACCESS_SECRET_KEY

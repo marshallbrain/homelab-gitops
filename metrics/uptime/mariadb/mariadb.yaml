@@ -1,0 +1,20 @@
+apiVersion: k8s.mariadb.com/v1alpha1
+kind: MariaDB
+metadata:
+  name: uptime-mariadb
+spec:
+  username: uptime
+  replicas: 1
+  port: 3306
+
+  passwordSecretKeyRef:
+    name: uptime-secret
+    key: UPTIME_KUMA_DB_PASSWORD
+    generate: true
+  database: uptime
+
+  # replication:
+  #   enabled: true
+
+  storage:
+    size: 1Gi

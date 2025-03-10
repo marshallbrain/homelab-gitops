@@ -2,12 +2,17 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
-  - deployment.yaml
-  - ingress.yaml
-  - service.yaml
-  - volume-claim.yaml
+  - deployment/deployment.yaml
+  - deployment/ingress.yaml
+  - deployment/service.yaml
+  - deployment/volume-claim.yaml
+
+  - mariadb/mariadb.yaml
+  - mariadb/backup.yaml
+
+  - secrets.yaml
 
 images:
 - name: uptime-kuma
   newName: louislam/uptime-kuma
-  newTag: "1.23.16"
+  newTag: "2.0.0-beta-slim.1"

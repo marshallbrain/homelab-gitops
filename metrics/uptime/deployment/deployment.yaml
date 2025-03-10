@@ -22,6 +22,20 @@ spec:
           env:
             - name: DATA_DIR
               value: "/data"
+            - name: UPTIME_KUMA_DB_TYPE
+              value: mariadb
+            - name: UPTIME_KUMA_DB_HOSTNAME
+              value: uptime-mariadb
+            - name: UPTIME_KUMA_DB_PORT
+              value: "3306"
+            - name: UPTIME_KUMA_DB_NAME
+              value: uptime
+            - name: UPTIME_KUMA_DB_USERNAME
+              value: uptime
+
+          envFrom:
+            - secretRef:
+                name: uptime-secret
 
           ports:
             - name: http
