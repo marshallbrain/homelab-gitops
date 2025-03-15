@@ -3,7 +3,14 @@ kind: Cluster
 metadata:
   name: grafana-postgres
 spec:
-  instances: 1
+  instances: 3
+
+  affinity:
+    tolerations:
+      - key: "type"
+        operator: "Equal"
+        value: "core"
+        effect: "NoSchedule"
   
   bootstrap:
     initdb:

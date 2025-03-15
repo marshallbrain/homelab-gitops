@@ -3,8 +3,16 @@ kind: Cluster
 metadata:
   name: immich-gallery-postgres
 spec:
-  instances: 1
+  instances: 3
   imageName: ghcr.io/tensorchord/cloudnative-pgvecto.rs:16.3-v0.2.1
+
+  affinity:
+    tolerations:
+      - key: "type"
+        operator: "Equal"
+        value: "core"
+        effect: "NoSchedule"
+
   postgresql:
     shared_preload_libraries:
       - "vectors.so"
