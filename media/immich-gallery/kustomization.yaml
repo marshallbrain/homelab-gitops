@@ -14,4 +14,4 @@ resources:
 images:
 - name: immich-server
   newName: ghcr.io/immich-app/immich-server
-  newTag: v1.125.7
+  newTag: v1.129.0
