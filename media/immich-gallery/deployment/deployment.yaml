@@ -5,7 +5,7 @@ metadata:
   name: immich-gallery
 spec:
   revisionHistoryLimit: 3
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       name: immich-gallery
